@@ -1,5 +1,7 @@
 import React from "react";
 
+const rng = Math.floor(Math.random() * Math.floor(100));
+
 const Weather = (props) => {
 	return (
 		<div className="weather__info">
@@ -10,12 +12,12 @@ const Weather = (props) => {
 
 			{ 
 				props.temperature && <p className="weather__key">Temperature: 
-				<span className="weather__value"> { props.temperature }</span></p> 
+				<span className="weather__value"> { props.temperature }&#8451;</span></p> 
 			}
 
 			{ 
 				props.humidity && <p className="weather__key">Humidity: 
-				<span className="weather__value"> { props.humidity }</span></p> 
+				<span className="weather__value"> { props.humidity }%</span></p> 
 			}
 
 			{ 
@@ -25,6 +27,10 @@ const Weather = (props) => {
 
 			{
 				props.error && <p className="weather__error">{ props.error}</p> 
+			}
+
+			{
+				props.fun && props.chance && <p className="weather__key">{ props.fun }<span className="weather__value">{ props.chance }</span></p> 
 			}
 
 		</div>

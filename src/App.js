@@ -16,6 +16,8 @@ class App extends React.Component {
     humidity: undefined,
     description: undefined,
     error: undefined,
+    fun: undefined,
+    rng: undefined
   }
 
   // getWeather fetches info from database with values of inputs and apiKey
@@ -35,11 +37,19 @@ class App extends React.Component {
       country: undefined,
       humidity: undefined,
       description: undefined,
-      error: "Invalid entry."
+      error: "Invalid entry.",
+      fun: undefined,
+      chance: undefined
       })
 
       // Valid input
     } else if (city && country) {
+
+            const funs = ["Chance to get hit by a car: ", "Chances of raining cats and dogs: ", "Chances of Half-Life 3 being released: ",
+                          "Chances of finding a penny on the ground: ", "Number of frogs procreating today: ", "Chances of winning a free coffee: "];
+            const size = funs.length;
+            const selector = Math.floor(Math.random() * Math.floor(size));
+            const rng = Math.floor(Math.random() * Math.floor(100));
 
             this.setState({
             temperature: data.main.temp,
@@ -47,7 +57,9 @@ class App extends React.Component {
             country: data.sys.country,
             humidity: data.main.humidity,
             description: data.weather[0].description,
-            error: ""
+            error: "",
+            fun: funs[selector],
+            chance: rng
             })
 
       // No input
@@ -59,7 +71,9 @@ class App extends React.Component {
       country: undefined,
       humidity: undefined,
       description: undefined,
-      error: "Please enter values."
+      error: "Please enter values.",
+      fun: undefined,
+      chance: undefined
       })
 
     }
@@ -87,6 +101,8 @@ class App extends React.Component {
                     humidity = {this.state.humidity} 
                     description = {this.state.description} 
                     error = {this.state.error} 
+                    fun = {this.state.fun}
+                    chance = {this.state.chance}
                   />
                 </div>
                 
